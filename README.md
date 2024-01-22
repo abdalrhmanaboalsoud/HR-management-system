@@ -29,8 +29,7 @@ Feel free to customize and extend the functionality according to your HR system 
 
 ## Contributors
 
-- [Your Name]
-- [Collaborator's Name]
+- Abdalrhman
 
 ## License
 
