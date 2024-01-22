@@ -33,4 +33,4 @@ Feel free to customize and extend the functionality according to your HR system 
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+© 2024 My Website. All rights reserved.
