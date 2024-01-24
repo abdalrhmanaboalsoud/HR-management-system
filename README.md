@@ -12,6 +12,8 @@ This project is a simple HR System for managing employee information, calculatin
 
 - **Rendering Employee Information:** Created a prototype function `empolyeeSalaryAndName` to render each employee's name and gross salary on the home webpage.
 
+- **Employee Cards:** Introduced a prototype function `employeeCard` to display employee information in separate cards on the homepage. Employee images are sourced directly from a public GitHub repository.
+
 - **Styling:** Styled the webpage using CSS, including a header with navigation links, a main content area, and a fixed footer with social media links and copyright information.
 
 ## Usage
@@ -24,6 +26,12 @@ This project is a simple HR System for managing employee information, calculatin
 
 1. Clone the repository to your local machine.
 2. Open `index.html` in a web browser.
+
+## Recent Updates - January 22, 2024
+
+1. **Employee Cards:** Added a new feature to display employee information in separate cards on the homepage using the `employeeCard` function. Employee images are sourced from a public GitHub repository.
+
+2. **README Update:** Updated the README file to include information about the recent changes and improvements made to the HR System application.
 
 Feel free to customize and extend the functionality according to your HR system requirements.
 
