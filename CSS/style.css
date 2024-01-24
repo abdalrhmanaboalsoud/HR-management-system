@@ -33,7 +33,22 @@ nav a {
     font-weight: bold;
     font-size: 18px;
 }
+section {
+    display: flex;
+    flex-direction: column;
+    
+}
+.employee-card {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.employee-card img {
+    border-radius: 50%;
+}
 main {
     max-width: 800px;
     margin: 20px auto;

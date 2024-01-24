@@ -1,58 +1,83 @@
-"use strict;"
-const listOfEmployees = [];
-function GenerateAnEmployee(employeeID, fullName, department, level, salary, imageURL = "No Image",) {
-    this.employeeID = employeeID;
+"use strict";
+
+var listOfEmployees = [];
+var idCounter = 1000;
+
+Employee.prototype.idGenerator = function () {
+    const generatedID = idCounter;
+    idCounter++;
+    return generatedID;
+};
+
+function Employee(fullName, department, level, imageURL = "default.jpg") {
+    this.employeeID = this.idGenerator();
     this.fullName = fullName;
     this.department = department;
     this.level = level;
     this.imageURL = imageURL;
-    this.salary = salary;
+    this.salary = this.calcSalary();
     listOfEmployees.push(this);
 }
-GenerateAnEmployee.prototype.calcSalary = function (min, max) {
+
+Employee.prototype.calcSalary = function () {
     const taxRate = 0.075;
 
     if (this.level.toLowerCase() === "junior") {
         this.salary = Math.floor(Math.random() * (1000 - 500 + 1) + 500);
-        const grossSalary = this.salary * 12;
-        this.salary = grossSalary * (1 - taxRate);
+        this.salary = this.salary * (1 - taxRate);
     } else if (this.level.toLowerCase() === "mid-senior") {
         this.salary = Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
-        const grossSalary = this.salary * 12;
-        this.salary = grossSalary * (1 - taxRate);
+        this.salary = this.salary * (1 - taxRate);
     } else if (this.level.toLowerCase() === "senior") {
         this.salary = Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
-        const grossSalary = this.salary * 12;
-        this.salary = grossSalary * (1 - taxRate);
+        this.salary = this.salary * (1 - taxRate);
     } else {
-        document.write("Invalid Level!")
+        return 0;
     }
-}
-GenerateAnEmployee.prototype.empolyeeSalaryAndName = function () {
-    document.write(`<p>Employee's Name : ${this.fullName}</p>`);
-    document.write(`<p>Employee's Gross Salary : ${this.salary}</p>`);
-    document.write('<hr>');
-}
+    return this.salary;
+};
 
-let employee0 = new GenerateAnEmployee("1000", "Ghazi Samer", "Administration", "Senior");
-let employee1 = new GenerateAnEmployee("1001", "Lana Ali", "Finance", "Senior");
-let employee2 = new GenerateAnEmployee("1002", "Tamara Ayoub", "Marketing", "Senior");
-let employee3 = new GenerateAnEmployee("1003", "Safi Walid", "Administration", "Mid-Senior");
-let employee4 = new GenerateAnEmployee("1004", "Omar Zaid", "Development", "Senior");
-let employee5 = new GenerateAnEmployee("1005", "Rana Saleh", "Development", "Junior");
-let employee6 = new GenerateAnEmployee("1006", "Hadi Ahmad", "Finance", "Mid-Senior");
+Employee.prototype.employeeCard = function () {
+    const card = document.createElement("div");
+    card.classList.add("employee-card");
 
+    const imgElement = document.createElement("img");
+    imgElement.src = `https://raw.githubusercontent.com/LTUC/amman-prep-d15/main/Class-08/lab/assets/${this.imageURL}`;
+    imgElement.alt = "Employee Image";
+    imgElement.style.width = "100%";
+
+    const pID = document.createElement("p");
+    pID.textContent = `Employee's ID: ${this.employeeID}`;
+
+    const pName = document.createElement("p");
+    pName.textContent = `Employee's Name: ${this.fullName}`;
+
+    const pSalary = document.createElement("p");
+    pSalary.textContent = `Employee's Gross Salary: ${this.salary}`;
+
+    card.appendChild(imgElement);
+    card.appendChild(pID);
+    card.appendChild(pName);
+    card.appendChild(pSalary);
+
+    document.body.appendChild(card);
+};
+
+document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const fullName = document.getElementById("fullName").value;
+    const department = document.getElementById("department").value;
+    const level = document.getElementById("lvl").value;
+    const imageURL = document.getElementById("img").value;
+
+    const newEmployee = new Employee(fullName, department, level, imageURL);
+
+    renderEmployees();
+});
 
 function renderEmployees() {
     for (let i = 0; i < listOfEmployees.length; i++) {
-        listOfEmployees[i].calcSalary();
-        listOfEmployees[i].empolyeeSalaryAndName();
+        listOfEmployees[i].employeeCard();
     }
 }
-
-renderEmployees();
-
-
-
-
-
