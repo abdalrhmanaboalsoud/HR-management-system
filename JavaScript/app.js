@@ -14,16 +14,16 @@ GenerateAnEmployee.prototype.calcSalary = function (min, max) {
 
     if (this.level.toLowerCase() === "junior") {
         this.salary = Math.floor(Math.random() * (1000 - 500 + 1) + 500);
-        const grossSalary = this.salary * 12;
-        this.salary = grossSalary * (1 - taxRate);
+        // const grossSalary = this.salary * 12;
+        this.salary = this.salary * (1 - taxRate);
     } else if (this.level.toLowerCase() === "mid-senior") {
         this.salary = Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
-        const grossSalary = this.salary * 12;
-        this.salary = grossSalary * (1 - taxRate);
+        // const grossSalary = this.salary * 12;
+        this.salary = this.salary * (1 - taxRate);
     } else if (this.level.toLowerCase() === "senior") {
         this.salary = Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
-        const grossSalary = this.salary * 12;
-        this.salary = grossSalary * (1 - taxRate);
+        // const grossSalary = this.salary * 12;
+        this.salary = this.salary * (1 - taxRate);
     } else {
         document.write("Invalid Level!")
     }
