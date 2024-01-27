@@ -73,11 +73,10 @@ document.getElementById("form").addEventListener("submit", function (event) {
 
     const newEmployee = new Employee(fullName, department, level, imageURL);
 
-    renderEmployees();
+    renderLastEmployee();
 });
 
-function renderEmployees() {
-    for (let i = 0; i < listOfEmployees.length; i++) {
-        listOfEmployees[i].employeeCard();
-    }
+function renderLastEmployee() {
+    const newEmployee = listOfEmployees[listOfEmployees.length - 1];
+    newEmployee.employeeCard();
 }
