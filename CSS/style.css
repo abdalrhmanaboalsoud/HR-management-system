@@ -1,88 +1,133 @@
-
-body, h1, h2, p, ul, li {
+/* Reset default browser styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    background-color: #f7f7f7;
 }
 
 header {
-    background-color: #3498db;
+    background-color: #333;
     color: #fff;
-    padding: 1em;
+    padding: 1rem;
     text-align: center;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
 }
 
 nav ul li {
-    display: inline-block;
-    margin-right: 5px;
+    display: inline;
+    margin-right: 20px;
 }
 
-nav a {
-    text-decoration: none;
+nav ul li a {
     color: #fff;
-    font-weight: bold;
-    font-size: 18px;
-}
-section {
-    display: flex;
-    flex-direction: column;
-    
-}
-.employee-card {
-    border: 1px solid #ddd;
-    margin: 10px;
-    padding: 10px;
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
-.employee-card img {
-    border-radius: 50%;
-}
-main {
-    max-width: 800px;
-    margin: 20px auto;
+section {
     padding: 20px;
+    margin: 20px;
     background-color: #fff;
-    border-radius: 8px;
+    box-sizing: 10px;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-footer {
-    background-color: #3498db;
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 0;
     text-align: center;
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
 }
 
 footer ul {
-    list-style: none;
+    list-style-type: none;
 }
 
 footer ul li {
-    display: inline-block;
-    margin-right: 10px;
+    display: inline;
+    margin-right: 20px;
 }
 
-footer a {
-    text-decoration: none;
+footer ul li a {
     color: #fff;
+    text-decoration: none;
 }
 
 footer p {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 14px;
+}
+.employee-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.employee-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.employee-card p {
+    margin-bottom: 10px;
+}
+
+.employee-card p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.employee-card p:not(:first-child) {
+    font-size: 14px;
+    color: #666;
 }
