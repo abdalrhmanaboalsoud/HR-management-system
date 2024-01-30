@@ -33,10 +33,12 @@ nav ul li a {
 }
 
 section {
+    display: inline-block;
+    align-items:self-end;
+    width: 25%;
     padding: 20px;
-    margin: 20px;
+    margin: 20px 36%;
     background-color: #fff;
-    box-sizing: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -53,6 +55,9 @@ label {
 
 input[type="text"],
 select {
+    display: flex;
+    font:  sans-serif;
+    align-content: center;
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -103,18 +108,22 @@ footer p {
     font-size: 14px;
 }
 .employee-card {
+    display: inline-flex; /* or inline-flex */
+    flex-direction: column;
+    width: 500px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 100px 20px; /* Adjust the margin as needed */
 }
+
 
 .employee-card img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    object-fit: cover;
+    /* object-fit: cover; */
     margin-bottom: 15px;
 }
 
