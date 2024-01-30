@@ -3,14 +3,8 @@
 var listOfEmployees = [];
 var idCounter = 1000;
 
-Employee.prototype.idGenerator = function () {
-    const generatedID = idCounter;
-    idCounter++;
-    return generatedID;
-};
-
 function Employee(fullName, department, level, imageURL = "default.jpg") {
-    this.employeeID = this.idGenerator();
+    this.employeeID = idCounter++;
     this.fullName = fullName;
     this.department = department;
     this.level = level;
@@ -21,20 +15,17 @@ function Employee(fullName, department, level, imageURL = "default.jpg") {
 
 Employee.prototype.calcSalary = function () {
     const taxRate = 0.075;
+    let baseSalary = 0;
 
     if (this.level.toLowerCase() === "junior") {
-        this.salary = Math.floor(Math.random() * (1000 - 500 + 1) + 500);
-        this.salary = this.salary * (1 - taxRate);
+        baseSalary = Math.floor(Math.random() * (1000 - 500 + 1) + 500);
     } else if (this.level.toLowerCase() === "mid-senior") {
-        this.salary = Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
-        this.salary = this.salary * (1 - taxRate);
+        baseSalary = Math.floor(Math.random() * (1500 - 1000 + 1) + 1000);
     } else if (this.level.toLowerCase() === "senior") {
-        this.salary = Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
-        this.salary = this.salary * (1 - taxRate);
-    } else {
-        return 0;
+        baseSalary = Math.floor(Math.random() * (2000 - 1500 + 1) + 1500);
     }
-    return this.salary;
+
+    return baseSalary * (1 - taxRate);
 };
 
 Employee.prototype.employeeCard = function () {
@@ -42,9 +33,10 @@ Employee.prototype.employeeCard = function () {
     card.classList.add("employee-card");
 
     const imgElement = document.createElement("img");
-    imgElement.src = `https://raw.githubusercontent.com/LTUC/amman-prep-d15/main/Class-08/lab/assets/${this.imageURL}`;
+    imgElement.src = `${this.imageURL}`;
     imgElement.alt = "Employee Image";
-    imgElement.style.width = "100%";
+    imgElement.style.width = "250px";
+    imgElement.style.height = "250px";
 
     const pID = document.createElement("p");
     pID.textContent = `Employee's ID: ${this.employeeID}`;
@@ -63,17 +55,44 @@ Employee.prototype.employeeCard = function () {
     document.body.appendChild(card);
 };
 
+function setDataLS (data){
+    
+    let comingData = JSON.stringify(data);
+    localStorage.setItem("employees", comingData);
+    
+}
+
+function getData(){
+    let reversData1 =localStorage.getItem("employees");
+    let reverseArr = JSON.parse(reversData1);
+    for ( let i = 0; i<reverseArr.length;i++){
+        new Employee (reverseArr[i].fullName, reverseArr[i].department, reverseArr[i].level, reverseArr[i].imageURL);
+    }
+    renderLastEmployee();
+}
+
 document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault();
-
     const fullName = document.getElementById("fullName").value;
     const department = document.getElementById("department").value;
     const level = document.getElementById("lvl").value;
     const imageURL = document.getElementById("img").value;
 
+    // localStorage.setItem("fullName", fullName);
+    // localStorage.setItem("department", department);
+    // localStorage.setItem("level", level);
+    // localStorage.setItem("imageURL", imageURL);
+
+    // // Log the stored values for verification
+    // localStorage.getItem("fullName");
+    // localStorage.getItem("department");
+    // localStorage.getItem("level");
+    // localStorage.getItem("imageURL");
+
     const newEmployee = new Employee(fullName, department, level, imageURL);
 
     renderLastEmployee();
+    setDataLS(listOfEmployees);
 });
 
 function renderLastEmployee() {
